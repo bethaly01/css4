@@ -6,15 +6,13 @@
         <br>
       </div>
       <div v-if="show">
-        <h4>You show has been Edit</h4>
+        <h4>Your show has been Edit</h4>
       </div>
-      <div v-if="showDelete">
-        <h4>You show has been Delete</h4>
-      </div>
-      <b-row v-if="!show || !showDelete">
+     
+      <b-row v-if="noForm">
         <b-col>
           
-          <b-form @submit.prevent="editShow(serie)" @reset.prevent="onReset"  @delete.prevent="deleteShow(serie)" class="form">
+          <b-form @submit.prevent="editShow(serie)" @reset.prevent="onReset" class="form">
             <b-form-group label="Title: ">
               <b-form-input v-model="serie.title" required placeholder="Enter Title" ></b-form-input>
             </b-form-group>
@@ -32,14 +30,12 @@
             </b-form-group>
             <b-row>
               <b-col>
-                <b-button type="submit" variant="sucess">Edit</b-button>
+                <b-button class="button-form" type="submit" variant="success">Edit</b-button>
               </b-col>
               <b-col>
-                <b-button type="reset" variant="primary">Reset</b-button>    
+                <b-button class="button-form" type="reset" variant="primary">Reset</b-button>    
               </b-col>
-              <b-col>
-                <b-button type="delete" variant="danger">Delete</b-button>    
-              </b-col>
+              
             </b-row>
             
           </b-form>
@@ -90,7 +86,8 @@ export default {
             serie:{},
             category: [{ text: 'Select A Category', value: null }, 'Anime', 'Cartoon', 'Serie', 'Movie'],
             show: false ,
-            showDelete :false
+            showDelete :false,
+            noForm:true
         }
     },
     created(){
@@ -113,22 +110,15 @@ export default {
             await axios.put("/api/items/" + show._id, {
             title: this.findItem.title,
             });
-            this.show = true;
-            this.onReset(event)
+            
         } catch (error) {
         console.log(error);
         }
+         this.show = true;
+         this.noForm = false;
+        this.onReset(event)
         },
-        async deleteShow(show){
-            try {
-                await axios.delete("/api/items/" + show._id); 
-                this.show = true;
-                this.onReset(event);        
-            } 
-            catch (error) {
-                console.log(error);
-            }
-        },
+        
         onReset(evt) {
         evt.preventDefault()
         // Reset our form values
@@ -148,5 +138,9 @@ export default {
 <style>
 .info{
     color:aqua;
+}
+
+.button-form{
+    width: 90px;
 }
 </style>

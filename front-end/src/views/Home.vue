@@ -32,6 +32,7 @@ export default {
       try {
         let response = await axios.get('/api/items');
         this.items = response.data;
+        console.log(this.items[2].urlTrailer )
         return true;
       } catch (error) {
         console.log(error);

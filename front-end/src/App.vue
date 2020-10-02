@@ -13,14 +13,9 @@
        
       </b-navbar-nav>
       <!-- Center-->
-    <b-navbar-brand href="#">What anime have you watch? </b-navbar-brand>
+    <h2 class="text-title">What show have you watch? </h2>
       <!-- Right aligned nav items -->
-      <b-navbar-nav class="ml-auto">
-        <b-nav-form >
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-        </b-nav-form>
-      </b-navbar-nav>
+      
     </b-collapse>
   </b-navbar>
 </div>
@@ -49,5 +44,13 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.text-title{
+    text-align: center;
+    position: absolute;
+    margin-left: 31%;
+
+
 }
 </style>

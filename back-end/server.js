@@ -37,7 +37,7 @@ app.post('/api/items', async (req, res) => {
     title: req.body.title,
     urlImage:req.body.urlImage,
     description:req.body.description,
-    urlTrailer:req.body.description,
+    urlTrailer:req.body.urlTrailer,
     category:req.body.category
   });
   try {

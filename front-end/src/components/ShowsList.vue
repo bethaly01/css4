@@ -46,7 +46,8 @@ export default {
     methods:{
         async deleteShow(show) {
             try {
-                await axios.delete("/api/items/" + show._id);            
+                await axios.delete("/api/items/" + show._id); 
+                location.reload();           
             } catch (error) {
                 console.log(error);
             }
@@ -65,6 +66,6 @@ export default {
         color:beige;
     }
      .buttonCard{
-      width: 100px;
+      width: 80px;
     }
 </style>

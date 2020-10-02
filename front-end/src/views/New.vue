@@ -97,7 +97,9 @@ export default {
    
     async upload() {
       try {
+        console.log(this.form)
          await axios.post('/api/items', {
+           
           title: this.form.title,
           urlImage:this.form.urlImage,
           description:this.form.description,
