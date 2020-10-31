@@ -1,30 +1,35 @@
 <template>
   <div>
     <b-container >
-      <div>
-        <h3> You watch another show ?? You have to add it to the list !! </h3>
+      <div class="EditDiv">
+        <h3 class="EditTitle"> You watch another show ?? You have to add it to the list !! </h3>
         <br>
       </div>
-      <div v-if="show">
-        <h4>You show has been added</h4>
+      <div class="EditDiv2" v-if="show">
+        <h4 class="EditTitle2" >Your show has been added. Go home or add another show</h4>
       </div>
       <b-row>
-        <b-col>
+        <b-col class="EditCol02">
           
           <b-form @submit.prevent="upload" @reset="onReset" class="form">
-            <b-form-group label="Title: ">
+            <b-form-group >
+              <label>Title: </label>
               <b-form-input v-model="form.title" required placeholder="Enter Title" ></b-form-input>
             </b-form-group>
-            <b-form-group label="Image:">
+            <b-form-group>
+              <label>Image:</label>
               <b-form-input v-model="form.urlImage" required placeholder="Enter a valid url for picture" ></b-form-input>
             </b-form-group>
-            <b-form-group label="Description: ">
+            <b-form-group>
+              <label>Description: </label>
               <b-form-input v-model="form.description" required placeholder="Enter a description" ></b-form-input>
             </b-form-group>
-            <b-form-group label="Trailer:">
+            <b-form-group>
+              <label>Trailer:</label>
               <b-form-input v-model="form.urlTrailer" required placeholder="Enter a youtube url for trailer" ></b-form-input>
             </b-form-group>
-             <b-form-group  label="Category">
+             <b-form-group>
+               <label>Category</label>
                <b-form-select v-model="form.category" :options="category" required></b-form-select>
             </b-form-group>
             <b-row>
@@ -42,7 +47,7 @@
         <b-col>
           <div>
             <div>
-              <h2>Card Preview </h2>
+              <h2  style="color:white">Card Preview </h2>
               </div>
               <b-card 
                     :header="form.category"
@@ -149,5 +154,8 @@ export default {
       margin: 0 auto; /* Added */
       float: none; /* Added */
       margin-bottom: 10px; /* Added */
+    }
+    .EditCol02{
+      padding-top: 7%;
     }
 </style>

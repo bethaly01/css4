@@ -61,6 +61,8 @@ app.get('/api/items', async (req, res) => {
   }
 });
 
+
+
 //Try to Get a show
 app.get('/api/items/:id', async (req, res) => {
   try {
@@ -71,6 +73,7 @@ app.get('/api/items/:id', async (req, res) => {
 
   } catch (error) {
     console.log(error);
+    
     res.sendStatus(500);
   }
 });
@@ -94,11 +97,29 @@ app.put('/api/items/:id',async(req,res)=> {
     let item = await Item.findOne({
     _id: req.params.id
   }); 
+  item.title = req.body.title;
+  item.urlImage = req.body.urlImage;
+  item.description = req.body.description;
+  item.urlTrailer = req.body.urlTrailer;
+  item.category = req.body.category;
+
   await item.save();
   res.send(item);
   } catch(error){
     console.log(error);
     res.sendStatus(500);
+  }
+});
+
+//get a list of all of the items in the museum by category
+app.get('/api/items/a/:category',async (req,res)=>{
+  try{
+    let items = await Item.find({
+      category:req.params.category
+    });
+    res.send(items);
+  }catch(error){
+    console.log(error);
   }
 });
 

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <b-card-group deck >
             
            <b-card v-for="serie in series" :key="serie.id" eader-tag="header"
                 :header="serie.category"
@@ -9,7 +8,6 @@
                 img-top
                 tag="article"
                 style="max-width: 20rem;"
-                class="mb-2"
             >
             <div>
                 <b-button  class="deleteButton" @click="deleteShow(serie)" variant="danger">X</b-button>
@@ -18,20 +16,22 @@
             {{serie.description}}
             </b-card-text>
             <b-row>
-                  <b-col>
-            <b-button variant="primary" class="buttonCard" >
-                <router-link :to="{ name:'edit', params:{ id: serie._id}}"  class="click"> Edit </router-link>
-            </b-button>
-            </b-col>
-            <b-col>
-            <b-button :href="serie.urlTrailer"  class="buttonCard"  variant="primary">
-                Trailer
-            </b-button>
-            </b-col>
+                <b-col>
+                    <router-link :to="{ name:'edit', params:{ id: serie._id}}"  class="click">
+                        <b-button variant="primary" class="buttonCard" >
+                            Edit 
+                        </b-button>
+                    </router-link>
+                </b-col>
+                <b-col>
+                    <b-button :href="serie.urlTrailer"  class="buttonCard"  variant="info">
+                        Trailer
+                    </b-button>
+                </b-col>
             </b-row>
                   
         </b-card>
-    </b-card-group>
+  
   </div>
 
 </template>
@@ -67,5 +67,13 @@ export default {
     }
      .buttonCard{
       width: 80px;
+    }
+
+    .card{
+        display: inline-table;
+        margin: 8px;
+    }
+    .card-img-top{
+        max-height: 238px;
     }
 </style>

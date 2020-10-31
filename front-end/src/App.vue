@@ -1,24 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div>
-  <b-navbar toggleable="lg" type="dark" variant="info">
-    
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav>
-        <b-nav-item to="/">Home</b-nav-item>
-        <b-nav-item to="/new" >Add New </b-nav-item>
-       
-      </b-navbar-nav>
-      <!-- Center-->
-    <h2 class="text-title">What show have you watch? </h2>
-      <!-- Right aligned nav items -->
-      
-    </b-collapse>
-  </b-navbar>
-</div>
+      <div class="HomeButtonDiv">
+        <b-button variant="danger" href="/" class="HomeButton">HOME</b-button>
+      </div>
     </div>
     <router-view />
   </div>
@@ -34,23 +19,38 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.navbar-nav{
+  padding-left: 45px;
 }
-
 .text-title{
     text-align: center;
     position: absolute;
     margin-left: 31%;
-
-
+}
+.b-navbar-brand{
+  font-size: 25px;
+}
+.HomeButtonDiv{
+  position: absolute;
+    float: right;
+    margin-left: 90%;
+    margin-top: 1.5%;
+}
+.HomeButton{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+#nav a {
+  color:white;
 }
 </style>
